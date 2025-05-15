@@ -1,14 +1,46 @@
+<!-- BRUNO'S SECTION START -->
+
+1. I implemented a global context to manage the selected season, replacing the previous hardcoded approach. See [SeasonContext](https://vscode.dev/github/brunoviews/technicalTest/blob/master/src/contexts/SeasonContext.tsx).
+   The [Layout](https://vscode.dev/github/brunoviews/technicalTest/blob/master/src/app/layout.tsx) now wraps the app with _SeasonProvider_, making the season accessible throughout the project.
+   All API requests now use the selected season from context, ensuring consistency and flexibility.
+
+2. EntitySelector: this component is now used for both league and season selection. I followed the same prop pattern for season options, which are centralized in _SEASON_OPTIONS_ for maintainability and reuse. [SEASON_OPTIONS](https://vscode.dev/github/brunoviews/technicalTest/blob/master/src/models/football.ts)
+
+3. Team Comparison: To enable stat highlighting, I extended [TeamStatsCard](https://vscode.dev/github/brunoviews/technicalTest/blob/master/src/components/TeamStatsCard.tsx) to accept an _otherStats_ prop, so each card receives both its own and the opposing team's stats.
+
+The _getStatColor_ function compares the relevant stats and applies color coding:
+
+`Green for Better` for better,
+
+# Red for worse,
+
+[Blue] for a tie.
+The boolean argument determines if "higher is better" (e.g., wins) or "lower is better" (e.g., losses).
+
+4. State Reset on Context Change: I added a useEffect in [CompareTeamsContent.tsx](https://vscode.dev/github/brunoviews/technicalTest/blob/master/src/components/CompareTeamsContent.tsx) to reset selected teams whenever the league, season, or team list changes.
+   This prevents stale or mismatched selections and ensures the correct data is always fetched and displayed.
+
+5. The project uses a [.env.local](https://vscode.dev/github/brunoviews/technicalTest/blob/master/.env.local) file to securely store the API key and base URL.
+   These are required for both local development and deployment (e.g., on Vercel).
+
+6. Deployment: The project is ready and deployed on Vercel: [VercelLink](https://technical-test-livid.vercel.app/).
+
+
+<!-- BRUNO'S SECTION END -->
+
 # Next.js Football Teams Comparison App
 
 This project is a web application built with Next.js and React that allows users to compare football teams from different leagues. It features team selectors, statistics comparison, and a clean, responsive UI using Tailwind CSS.
 
 ## Features
+
 - Select a football league and compare statistics between two teams.
 - Fetches and displays team data and statistics.
 - Responsive design for desktop and mobile.
 - Modular component structure and context-based state management.
 
 ## Project Structure
+
 - `src/app/` - Main Next.js app directory (pages, API routes, global styles).
 - `src/components/` - Reusable UI components (selectors, cards, etc.).
 - `src/containers/` - Container components for managing data and state.
@@ -17,6 +49,7 @@ This project is a web application built with Next.js and React that allows users
 - `src/utils/` - Utility functions and API logic.
 
 ## Getting Started
+
 1. Install dependencies:
    ```bash
    npm install
@@ -28,6 +61,7 @@ This project is a web application built with Next.js and React that allows users
    ```
 
 ## Environment Variables
+
 To run this project, you need to create a `.env.local` file in the root directory. The following environment variables may be required:
 
 ```
@@ -62,4 +96,5 @@ Refer to the [API-FOOTBALL documentation](https://www.api-football.com/documenta
 If you run the app in `development` mode, the app will consume `mockapi` instead of the real API.
 
 ## License
+
 MIT
