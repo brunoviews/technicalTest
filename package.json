@@ -17,5 +17,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }

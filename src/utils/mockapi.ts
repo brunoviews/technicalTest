@@ -649,8 +649,8 @@ export async function fetchTeamStatistics(
 				leagueId === '39'
 					? 'Premier League'
 					: leagueId === '140'
-					? 'La Liga'
-					: 'Serie A',
+						? 'La Liga'
+						: 'Serie A',
 			country:
 				leagueId === '39' ? 'England' : leagueId === '135' ? 'Italy' : 'Spain',
 			logo: `https://media.api-sports.io/football/leagues/${leagueId}.png`,

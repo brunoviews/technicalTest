@@ -26,7 +26,7 @@ export async function fetchTeamStatistics(
 	season: string
 ): Promise<TeamStatistics> {
 	if (process.env.NODE_ENV === 'development') {
-		return mock.fetchTeamStatistics(leagueId, teamId,season);
+		return mock.fetchTeamStatistics(leagueId, teamId, season);
 	}
 	// Use proxy route for CORS safety
 	const res = await fetch(

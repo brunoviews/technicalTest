@@ -5,7 +5,7 @@ export interface Team {
 	country: string;
 	founded: number | null;
 	national: boolean;
-	logo?: string;
+	logo: string;
 }
 
 export interface Venue {
